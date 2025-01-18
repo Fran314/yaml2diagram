@@ -1,0 +1,132 @@
+/* GLOBAL DEFAULTS */
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	margin: 0;
+	font-weight: normal;
+}
+
+:root {
+	--color-body-background: #f2f2f2;
+	--color-content-background: #ffffff;
+	--color-title: #282828;
+	--color-text: #282828;
+	--color-border: #666666;
+
+	--color-green: #00aa00;
+	--color-red: #ff2828;
+	--color-reddish: #aa2828;
+}
+
+html,
+body {
+	height: 100vh;
+	height: 100dvh;
+	max-height: 100vh;
+	max-height: 100dvh;
+}
+
+body {
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+
+	font-size: 20px;
+}
+/* /GLOBAL DEFAULTS */
+
+body {
+	font-family: Roboto, sans-serif;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.diagram {
+	width: min-content;
+	height: min-content;
+
+	display: flex;
+
+	gap: 3rem;
+}
+
+.box {
+	padding: 1rem;
+	border: solid 2px #000;
+	border-radius: 10px;
+
+	min-width: 8rem;
+	/* min-height: 10rem; */
+	width: fit-content;
+	height: fit-content;
+
+	position: relative;
+
+	display: flex;
+	flex-direction: column;
+
+	gap: 1rem;
+}
+.box::before {
+	position: absolute;
+	bottom: 100%;
+	left: 0%;
+	display: block;
+	content: attr(label);
+}
+
+.dotted {
+	border: dashed 2px #000;
+}
+
+.folder {
+	padding: 0.5rem 1rem 0.5rem 0.5rem;
+	border: solid 2px #000;
+	border-top-right-radius: 10px;
+	border-bottom-right-radius: 10px;
+	border-bottom-left-radius: 10px;
+
+	border-top-left-radius: 3px;
+
+	position: relative;
+
+	width: fit-content;
+}
+.folder::before {
+	display: block;
+	content: '';
+	position: absolute;
+	bottom: 100%;
+	left: 0%;
+	height: 10px;
+	width: 30px;
+
+	border-left: solid 2px #000;
+	border-right: solid 2px #000;
+	border-top: solid 2px #000;
+
+	border-top-right-radius: 10px;
+	border-top-left-radius: 3px;
+}
+
+.parallelogram {
+	padding: 1rem;
+	border: solid 2px #000;
+	border-radius: 10px;
+
+	width: fit-content;
+
+	position: relative;
+
+	display: flex;
+	flex-direction: column;
+
+	gap: 1rem;
+	margin: 0 1rem;
+	transform: skew(-10deg);
+}
+.parallelogram > * {
+	transform: skew(10deg);
+}

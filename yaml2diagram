@@ -1,0 +1,76 @@
+#!/usr/bin/env python3
+
+import argparse
+import yaml
+
+parser = argparse.ArgumentParser(prog='yaml2diagram', description='Convert a YAML file describing a diagram into an html file with the render of the diagram')
+parser.add_argument('input', help='yaml input file')
+parser.add_argument('output', help='html output file')
+
+
+def split_attribute(attribute):
+    key, val = attribute.split('=')
+    return f'{key}="{val}"'
+
+
+def parse_label(label):
+    head, *tail = label.split('&')
+    id, *classes = head.split('.')
+    attributes = [split_attribute(a) for a in tail]
+
+    return id, classes, attributes
+
+
+def div(id, classes, attributes, content):
+    tag = ['div']
+
+    if id != '':
+        tag.append(f'id="{id}"')
+
+    if len(classes) > 0:
+        tag.append(f'class="{' '.join(classes)}"')
+
+    tag += attributes
+    tag = ' '.join(tag)
+
+    return f'<{tag}>{content}</div>'
+
+
+def generate_diagram(obj):
+    output = ''
+    for label in obj:
+        id, classes, attributes = parse_label(label)
+        if isinstance(obj[label], str):
+            output += div(id, classes, attributes, f'<pre>{obj[label]}</pre>')
+        elif isinstance(obj[label], dict):
+            output += div(id, classes, attributes, generate_diagram(obj[label]))
+        elif obj[label] is None:
+            output += div(id, classes, attributes, '')
+        else:
+            print(label)
+            print(type(obj[label]))
+            print('unknown type')
+
+    return output
+
+
+args = parser.parse_args()
+
+with open('index.html', 'r') as file:
+    INDEX = file.read()
+with open('style.css', 'r') as file:
+    STYLE = file.read()
+with open(args.input,'r') as file:
+    DIAGRAM = yaml.safe_load(file)
+
+generate_diagram(DIAGRAM['root'])
+
+with open(args.output, 'w') as file:
+    content = INDEX.replace(
+            '<!-- {{style}} -->',
+            f'<style>\n{STYLE}\n</style>'
+        ).replace(
+            '<!-- {{diagram}} -->',
+            generate_diagram(DIAGRAM['root'])
+        )
+    file.write(content)
