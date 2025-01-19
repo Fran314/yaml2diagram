@@ -1,11 +1,11 @@
-root:
+root.col-2:
     .box.dashed&label=homelab:
         .box: nested
         .: content
         .icon.abs.bottom.red: lock
-    .folder: |
+    .folder.t-blue: |
         multiline
         string
-    .box.skew.red: colored skewed box!
+    .box.skew.b-red.t-blue: colored skewed box!
 
 links:

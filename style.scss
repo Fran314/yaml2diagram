@@ -75,6 +75,9 @@ body {
 	display: flex;
 	flex-direction: column;
 
+	justify-content: center;
+	align-items: center;
+
 	&.flex-row {
 		flex-direction: row;
 	}
@@ -133,6 +136,7 @@ body {
 	position: relative;
 
 	width: fit-content;
+	height: fit-content;
 
 	&::before {
 		display: block;

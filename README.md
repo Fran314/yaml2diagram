@@ -1,5 +1,7 @@
 # yaml2diagram
 
+![Example of a diagram generated with yaml2diagram](showcase/img.png)
+
 `yaml2diagram` builds pretty diagrams declared in YAML, into html files
 
 ## How to use
@@ -19,15 +21,14 @@ to convert the `input.yml` file to a diagram into `output.html`
 Here is an example of a `yaml` file using the syntax for `yaml2diagram`
 
 ```yaml
-root:
-    .box.dotted&label=homelab:
+root.col-2:
+    .box.dashed&label=homelab:
         .box: nested
         .: content
         .icon.abs.bottom.red: lock
-    .folder: |
+    .folder.t-blue: |
         multiline
         string
-        here!
     .box.skew.b-red.t-blue: colored skewed box!
 
 links: !TODO
@@ -46,7 +47,7 @@ Each object has its own key. Some examples of object keys are:
 root
 .folder
 .box.dashed&label=homelab
-root.c2
+root.col-2
 .icon.abs
 &label=server
 .
