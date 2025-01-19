@@ -1,14 +1,11 @@
 root:
-    id.class1.class2&attribute1=val&attribute2=val:
-        .class3: this is an id-less div
-        id2: |
-            this is some
-            multiline
-            text!
-        .: id-less, class-less
-    id3.box: here is a box
-    id4.box.dotted: here is a dotted box
-    id5.box&label=a box!: |
-        here is a box with a
-        label on top (with spaces!)
-    id6.parallelogram: a parallelogram
+    .box.dashed&label=homelab:
+        .box: nested
+        .: content
+        .icon.abs.bottom.red: lock
+    .folder: |
+        multiline
+        string
+    .box.skew.red: colored skewed box!
+
+links:

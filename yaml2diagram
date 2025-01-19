@@ -2,6 +2,7 @@
 
 import argparse
 import yaml
+import sass
 
 parser = argparse.ArgumentParser(prog='yaml2diagram', description='Convert a YAML file describing a diagram into an html file with the render of the diagram')
 parser.add_argument('input', help='yaml input file')
@@ -21,29 +22,42 @@ def parse_label(label):
     return id, classes, attributes
 
 
-def div(id, classes, attributes, content):
-    tag = ['div']
+def opening_tag(id, classes, attributes):
+    opening_tag_content = [ 'div' ]
 
     if id != '':
-        tag.append(f'id="{id}"')
-
+        opening_tag_content.append(f'id="{id}"')
     if len(classes) > 0:
-        tag.append(f'class="{' '.join(classes)}"')
+        class_list = ' '.join(classes)
+        opening_tag_content.append(f'class="{class_list}"')
+    if len(attributes) > 0:
+        opening_tag_content += attributes
 
-    tag += attributes
-    tag = ' '.join(tag)
-
-    return f'<{tag}>{content}</div>'
+    return ' '.join(opening_tag_content)
 
 
-def generate_diagram(obj):
+def style(content):
+    return f'<style>{content}</style>'
+
+
+def div(id, classes, attributes, content):
+    o_tag = opening_tag(id, classes, attributes)
+    c_tag = '/div'
+
+    return f'<{o_tag}>{content}<{c_tag}>'
+
+
+def generate_obj(obj):
     output = ''
     for label in obj:
         id, classes, attributes = parse_label(label)
-        if isinstance(obj[label], str):
+        if "icon" in classes:
+            content = f'<span class="material-icons">{obj[label]}</span>'
+            output += div(id, classes, attributes, content)
+        elif isinstance(obj[label], str):
             output += div(id, classes, attributes, f'<pre>{obj[label]}</pre>')
         elif isinstance(obj[label], dict):
-            output += div(id, classes, attributes, generate_diagram(obj[label]))
+            output += div(id, classes, attributes, generate_obj(obj[label]))
         elif obj[label] is None:
             output += div(id, classes, attributes, '')
         else:
@@ -54,23 +68,39 @@ def generate_diagram(obj):
     return output
 
 
+def get_root(labels):
+    for label in labels:
+        id, _, _ = parse_label(label)
+        if id == 'root':
+            return label
+
+
+def generate_diagram(diagram):
+    root = get_root(diagram.keys())
+    _, classes, attributes = parse_label(root)
+    classes = [ "diagram" ] + classes
+    return div('', classes, attributes, generate_obj(diagram[root]))
+
+
 args = parser.parse_args()
 
 with open('index.html', 'r') as file:
     INDEX = file.read()
-with open('style.css', 'r') as file:
-    STYLE = file.read()
+# with open('style.css', 'r') as file:
+#     STYLE = file.read()
+with open('style.scss', 'r') as file:
+    STYLE = sass.compile(string=file.read(), output_style='compressed')
 with open(args.input,'r') as file:
     DIAGRAM = yaml.safe_load(file)
 
-generate_diagram(DIAGRAM['root'])
 
+def hook(name):
+    return '<!-- {{' + name + '}} -->'
+
+render = INDEX
+render = render.replace(hook('style'), style(STYLE))
+render = render.replace(hook('diagram'), generate_diagram(DIAGRAM))
+
+print(args.output)
 with open(args.output, 'w') as file:
-    content = INDEX.replace(
-            '<!-- {{style}} -->',
-            f'<style>\n{STYLE}\n</style>'
-        ).replace(
-            '<!-- {{diagram}} -->',
-            generate_diagram(DIAGRAM['root'])
-        )
-    file.write(content)
+    file.write(render)
