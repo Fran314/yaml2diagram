@@ -2,3 +2,5 @@
 !.env*.example
 
 *.local*
+
+__pycache__
