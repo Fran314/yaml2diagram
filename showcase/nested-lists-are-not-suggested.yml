@@ -1,0 +1,14 @@
+diagram:
+    - some text
+    - - .box: a box
+      - .box: another box
+    - |
+        some multiline
+        text
+
+# This gives the same result as the following (which is the suggested syntax):
+# diagram:
+#     - some text
+#     - .box: a box
+#     - .box: another box
+#     - other text

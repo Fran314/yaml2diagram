@@ -1,0 +1,4 @@
+diagram:
+    - .box: A simple box
+    - .box.dashed: a box with dashes
+    - .box: Another box!

@@ -1,0 +1,12 @@
+diagram:
+    - |
+        There is a list
+        somewhere inside
+        this list but this
+        is ok!
+    - .box:
+          - many contents!
+          - .box: some styled
+          - some not
+    - this is fine!
+

@@ -1,0 +1,7 @@
+diagram:
+    - just text
+    - .box: and a container
+    - .box: |
+          and another container
+          with the same key!
+    - and other text

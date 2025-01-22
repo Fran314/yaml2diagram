@@ -1,0 +1,17 @@
+diagram:
+    .box: |
+        This box won't be
+        rendered because it's
+        overwritten by the
+        last entry of `diagram`
+    .box.dashed: a box with dashes
+    .box: |
+        This `.box` overrides
+        the first `.box`
+
+# This has the same result as:
+# diagram:
+#     .box.dashed: a box with dashes
+#     .box: |
+#         This `.box` overrides
+#         the first `.box`

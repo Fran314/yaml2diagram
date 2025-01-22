@@ -71,17 +71,17 @@ A diagram consisting of only a single string can be expressed as the following
 # just-text-diagram.yml
 
 diagram: here is just some text
-```       
+
+````
+
 </td>
 <td>
-    
-![Example of a diagram generated with yaml2diagram](showcase/img.png)
+
+![Diagram with just some text](showcase/just-text-diagram.png)
 
 </td>
 </tr>
 </table>
-
-
 
 ### Containers
 
@@ -93,16 +93,30 @@ container keys and how to style them).
 Here is an example where the diagram is composed of a single styled container,
 in the shape of a box, containing a string
 
+
+<table>
+<tr>
+<td>
+
 ```yaml
-# very-simple-diagram.yml
+# just-a-box-diagram.yml
 
 diagram:
     .box: some text
-```
 
-> [!WARNING]  
-> As far as YAML is concerned, in the previous example `.box` is just one of the
-> possibly multiple entries of the dictionary `diagram`.
+````
+
+</td>
+<td>
+
+![Diagram with just a box](showcase/just-a-box-diagram.png)
+
+</td>
+</tr>
+</table>
+
+> [!WARNING] As far as YAML is concerned, in the previous example `.box` is just
+> one of the possibly multiple entries of the dictionary `diagram`.
 >
 > Intuitively, it would make sense for multiple entries to be displayed as
 > separate containers one after the other at the same level. Indeed,
@@ -114,8 +128,14 @@ diagram:
 > display them as if they were separate containers inside a list, but a warning
 > will be given
 
+<table>
+<tr>
+<td>
+
+This won't do what you'd think
+
 ```yaml
-# technically-valid-but-not-recommended-containers-syntax.yml
+# valid-YAML-but-not-recommended-container-syntax.yml
 
 diagram:
     .box: |
@@ -135,12 +155,37 @@ diagram:
 #         This `.box` overrides
 #         the first `.box`
 
-# What you should use is
-# diagram:
-#     - .box: A simple box
-#     - .box.dashed: a box with dashes
-#     - .box: Another box!
 ```
+
+</td>
+<td>
+
+![Diagram with valid YAML but not recommended container syntax](showcase/valid-YAML-but-not-recommended-container-syntax.png)
+
+</td>
+</tr>
+<tr>
+<td>
+
+This is how you should list containers
+
+```yaml
+# recommended-containers-syntax.yml
+
+diagram:
+    - .box: A simple box
+    - .box.dashed: a box with dashes
+    - .box: Another box!
+```
+
+</td>
+<td>
+
+![Diagram with recommended container syntax](showcase/recommendend-container-syntax.png)
+
+</td>
+</tr>
+</table>
 
 #### Special containers
 
@@ -157,6 +202,10 @@ A list of all the special classes is given in the
 Lists are YAML lists and can be used to display multiple values and containers
 inside a container.
 
+<table>
+<tr>
+<td>
+
 ```yaml
 # list-example-diagram.yml
 
@@ -169,12 +218,27 @@ diagram:
     - and other text
 ```
 
-> [!WARNING]  
-> While not suggested, entries of a list could also be lists themselves.
+</td>
+<td>
+
+![Diagram with an example list](showcase/list-example-diagram.png)
+
+</td>
+</tr>
+</table>
+
+> [!WARNING] While not suggested, entries of a list could also be lists
+> themselves.
 >
 > The effect of doing this is that `yaml2diagram` will just flatten the list and
 > raise a warning. It is not suggested to use nested lists (unless when using
 > intermediate containers)
+
+<table>
+<tr>
+<td>
+
+This style is not suggested as it is pointless
 
 ```yaml
 # nested-lists-are-not-suggested.yml
@@ -193,25 +257,53 @@ diagram:
 #     - .box: a box
 #     - .box: another box
 #     - other text
-
-# Of course, nested lists are available when there are intermediate containers:
-# diagram:
-#     - |
-#         There is a list
-#         somewhere inside
-#         this list but this
-#         is ok!
-#     - .box:
-#         - many contents!
-#         - .box: some styled
-#         - some not
-#     - this is fine!
 ```
+
+</td>
+<td>
+
+![Diagram with nested lists](showcase/nested-lists-are-not-suggested.png)
+
+</td>
+</tr>
+<tr>
+<td>
+
+Of course, nested lists are available when there are intermediate containers
+
+```yaml
+# these-nested-lists-are-ok.yml
+
+diagram:
+    - |
+        There is a list
+        somewhere inside
+        this list but this
+        is ok!
+    - .box:
+          - many contents!
+          - .box: some styled
+          - some not
+    - this is fine!
+```
+
+</td>
+<td>
+
+![Diagram with allowed nested lists](showcase/these-nested-lists-are-ok.png)
+
+</td>
+</tr>
+</table>
 
 ### Empties
 
 The content of a container or an entry of a list can be left completely empty,
 as in the following example
+
+<table>
+<tr>
+<td>
 
 ```yaml
 # diagram-with-empties.yml
@@ -225,6 +317,15 @@ diagram:
         there is some
         space before me
 ```
+
+</td>
+<td>
+
+![Diagram with empties](showcase/diagram-with-empties.png)
+
+</td>
+</tr>
+</table>
 
 Empty containers can be used to draw some content-less containers in the
 diagram, and empty entries in a list can be used to space around objects in the
@@ -247,10 +348,10 @@ None of the components of a key (`id`, `classes` and `attributes`) is required:
 a key could be only an `id` (eg `diagram`), only a `class` (eg `.box`), only an
 attribute (eg `&label=server`) or completely empty (read note below).
 
-> [!NOTE]  
-> An empty key would be effectively equal to some unstyled value, and while
-> technically possible to have a container without any id, class nor attribute
-> (for example with the key `.`), it is suggested to just use a simple value
+> [!NOTE] An empty key would be effectively equal to some unstyled value, and
+> while technically possible to have a container without any id, class nor
+> attribute (for example with the key `.`), it is suggested to just use a simple
+> value
 
 ```
 ID.CLASS1.CLASS2.CLASSn&ATTR1=VAL1&ATTR2=VAL2&ATTRn=VALn
@@ -324,7 +425,13 @@ Material Icon.
 
 All the `.<color>` modifier classes work on icons.
 
+<table>
+<tr>
+<td>
+
 ```yaml
+# diagram-with-icons.yml
+
 diagram.row:
     - .box.dashed&label=chest:
           - |
@@ -338,6 +445,15 @@ diagram.row:
           - .icon.blue: key
           - .icon: swords
 ```
+
+</td>
+<td>
+
+![Diagram with icons](showcase/diagram-with-icons.png)
+
+</td>
+</tr>
+</table>
 
 ### Attributes
 
@@ -353,12 +469,6 @@ Links don't currently work
 
 ## TODO
 
--   Add an intermediate step between `yaml -> html` like
-    `yaml -> abstract-object -> html` for better element manipulation and
-    context handling
--   Replace objects with arrays to allow for elements with same key
--   Download material icons on use, and inject the SVG-s (possibly with
-    background-color outline)
 -   Add puppeteer to automatically get an image instead of an html file
 
 ## Developement
@@ -384,3 +494,4 @@ This is really a terrible way to do this, but it works and it doesn't require
 any fancy setup (except having installed entr I guess)
 
 </details>
+````

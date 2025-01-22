@@ -1,0 +1,12 @@
+diagram.row:
+    - .box.dashed&label=chest:
+          - |
+              This chest is
+              locked, but a red
+              key might unlock it
+          -
+          - .icon.abs.bottom.red: lock
+    - .box.dashed:
+          - .icon.red: key
+          - .icon.blue: key
+          - .icon: swords
