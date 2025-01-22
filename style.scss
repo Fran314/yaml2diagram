@@ -80,6 +80,8 @@ $colors: 'red', 'orange', 'yellow', 'green', 'light-blue', 'blue', 'purple';
 	width: min-content;
 	height: min-content;
 
+	background: var(--background-color);
+
 	display: flex;
 	flex-direction: column;
 	justify-content: center;

@@ -77,7 +77,7 @@ diagram: here is just some text
 </td>
 <td>
 
-![Diagram with just some text](showcase/just-text-diagram.png)
+<img src="showcase/just-text-diagram.png" width="50%"/>
 
 </td>
 </tr>
