@@ -496,4 +496,3 @@ This is really a terrible way to do this, but it works and it doesn't require
 any fancy setup (except having installed entr I guess)
 
 </details>
-````
