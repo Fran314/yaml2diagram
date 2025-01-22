@@ -77,7 +77,7 @@ diagram: here is just some text
 </td>
 <td>
 
-<img src="showcase/just-text-diagram.png" width="300px"/>
+![Diagram with just some text](showcase/just-text-diagram.png)
 
 </td>
 </tr>
@@ -109,7 +109,7 @@ diagram:
 </td>
 <td>
 
-<img src="showcase/just-a-box-diagram.png" width="300px"/>
+![Diagram with just a box](showcase/just-a-box-diagram.png)
 
 </td>
 </tr>
@@ -161,7 +161,7 @@ diagram:
 </td>
 <td>
 
-<img src="showcase/valid-YAML-but-not-recommended-container-syntax.png" width="300px"/>
+![Diagram with valid YAML but not recommended container syntax](showcase/valid-YAML-but-not-recommended-container-syntax.png)
 
 </td>
 </tr>
@@ -182,7 +182,7 @@ diagram:
 </td>
 <td>
 
-<img src="showcase/recommended-container-syntax.png" width="300px"/>
+![Diagram with recommended container syntax](showcase/recommended-container-syntax.png)
 
 </td>
 </tr>
@@ -222,7 +222,7 @@ diagram:
 </td>
 <td>
 
-<img src="showcase/list-example-diagram.png" width="300px"/>
+![Diagram with an example list](showcase/list-example-diagram.png)
 
 </td>
 </tr>
@@ -252,7 +252,8 @@ diagram:
         some multiline
         text
 
-# This gives the same result as the following (which is the suggested syntax):
+# This gives the same result as the following
+# (which is the suggested syntax):
 # diagram:
 #     - some text
 #     - .box: a box
@@ -263,7 +264,7 @@ diagram:
 </td>
 <td>
 
-<img src="showcase/nested-lists-are-not-suggested.png" width="300px"/>
+![Diagram with nested lists](showcase/nested-lists-are-not-suggested.png)
 
 </td>
 </tr>
@@ -291,7 +292,7 @@ diagram:
 </td>
 <td>
 
-<img src="showcase/these-nested-lists-are-ok.png" width="300px"/>
+![Diagram with allowed nested lists](showcase/these-nested-lists-are-ok.png)
 
 </td>
 </tr>
@@ -322,7 +323,7 @@ diagram:
 </td>
 <td>
 
-<img src="showcase/diagram-with-empties.png" width="300px"/>
+![Diagram with empties](showcase/diagram-with-empties.png)
 
 </td>
 </tr>
@@ -450,7 +451,7 @@ diagram.row:
 </td>
 <td>
 
-<img src="showcase/diagram-with-icons.png" width="300px"/>
+![Diagram with icons](showcase/diagram-with-icons.png)
 
 </td>
 </tr>
