@@ -20,7 +20,7 @@ to convert the `input.yml` file to a diagram into `output.html`
 
 The source files for `yaml2diagram` are YAML files consisting of a YAML
 dictionary with a single entry called `diagram` (eventually with modifiers, see
-the [diagram root section](###diagram-root)). The `diagram` entry is a container
+the [diagram root section](#diagram-root)). The `diagram` entry is a container
 which contains the whole diagram.
 
 ```yaml
@@ -73,8 +73,8 @@ diagram: some text
 
 Containers are YAML dictionaries with a single entry, composed of a key and some
 content. A container can be styled by adding classes and attributes to its key
-(refer to the [keys section](###container-keys) to understand how to properly
-use container keys and how to style them).
+(refer to the [keys section](#container-keys) to understand how to properly use
+container keys and how to style them).
 
 Here is an example where the diagram is composed of a single styled container,
 in the shape of a box, containing a string
@@ -96,7 +96,7 @@ diagram:
 > doesn't allow for multiple entries with the same key at the same level.
 >
 > The correct way to display multiple containers is to use a list (see the
-> [lists](###lists) section). If multiple entries are given, `yaml2diagram` will
+> [lists](#lists) section). If multiple entries are given, `yaml2diagram` will
 > display them as if they were separate containers inside a list, but a warning
 > will be given
 
@@ -136,7 +136,7 @@ are just containers but on render are treated differently from other containers.
 Other special containers are icons.
 
 A list of all the special classes is given in the
-[special classes section](###special-classes)
+[special classes section](#special-classes)
 
 ### Lists
 
@@ -218,8 +218,8 @@ diagram.
 
 ### Container Keys
 
-As explained in the [container section](###containers), a container is composed
-of a (single) key and a value. The container key is used to style the container.
+As explained in the [container section](#containers), a container is composed of
+a (single) key and a value. The container key is used to style the container.
 
 A key is composed of an `id`, some `classes` and some `attributes`. In most
 cases, these map 1:1 to html DOMs.
