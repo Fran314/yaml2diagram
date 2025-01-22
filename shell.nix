@@ -15,6 +15,7 @@ in mkShell {
         (python3.withPackages (ps: with ps; [
 			pyaml
 			libsass
+			requests
         ]))
     ];
 

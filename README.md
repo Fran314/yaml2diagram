@@ -289,16 +289,16 @@ container classes are:
 Next, modifier classes modify the appearence of the object, either of the
 container or of its content. The modifier classes are:
 
-| Class                                | Effect                                                                                                                                           |
-| ------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `.row`                               | display the contents of the container in a row instad of a column                                                                                |
-| `.dashed`                            | makes the border of the container dotted instead of solid                                                                                        |
-| `.skew`                              | skews the container (`.box` becomes a parallelogram)                                                                                             |
-| `.<color>`                           | makes the container and its content of color `<color>`, where `<color>` can be chosen between: `red`, `blue`                                     |
-| `.b-<color>`                         | makes the container (but not its content) of color `<color>`, where `<color>` can be chosen between: `red`, `blue`                               |
-| `.t-<color>`                         | makes the content (but not the container) of color `<color>`, where `<color>` can be chosen between: `red`, `blue`                               |
-| `.abs`                               | position the container absolutely relative to its parent, by default centered vertically and horizontally                                        |
-| `.top`, `.bottom`, `.left`, `.right` | when in combination with `.abs`, aligns the container respectively to the top, bottom, left and right. Can be used in combination with eachother |
+| Class                                | Effect                                                                                                                                                                  |
+| ------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `.row`                               | display the contents of the container in a row instad of a column                                                                                                       |
+| `.dashed`                            | makes the border of the container dotted instead of solid                                                                                                               |
+| `.skew`                              | skews the container (`.box` becomes a parallelogram)                                                                                                                    |
+| `.<color>`                           | makes the container and its content of color `<color>`, where `<color>` can be chosen between: `red`, `orange`, `yellow`, `green`, `light-blue`, `blue`, `purple`       |
+| `.b-<color>`                         | makes the container (but not its content) of color `<color>`, where `<color>` can be chosen between: `red`, `orange`, `yellow`, `green`, `light-blue`, `blue`, `purple` |
+| `.t-<color>`                         | makes the content (but not the container) of color `<color>`, where `<color>` can be chosen between: `red`, `orange`, `yellow`, `green`, `light-blue`, `blue`, `purple` |
+| `.abs`                               | position the container absolutely relative to its parent, by default centered vertically and horizontally                                                               |
+| `.top`, `.bottom`, `.left`, `.right` | when in combination with `.abs`, aligns the container respectively to the top, bottom, left and right. Can be used in combination with eachother                        |
 
 ### Special classes
 
@@ -309,6 +309,21 @@ object MUST contain only a string, which will be converted to the corresponding
 Material Icon.
 
 All the `.<color>` modifier classes work on icons.
+
+```yaml
+diagram.row:
+    - .box.dashed&label=chest:
+          - |
+              This chest is
+              locked, but a red
+              key might unlock it
+          -
+          - .icon.abs.bottom.red: lock
+    - .box.dashed:
+          - .icon.red: key
+          - .icon.blue: key
+          - .icon: swords
+```
 
 ### Attributes
 

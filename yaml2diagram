@@ -4,6 +4,8 @@ from cli import args
 from renderer import render
 from diagram import get_diagram
 
+import material_icons
+
 diagram = get_diagram(args.input)
 
 print(args.output)

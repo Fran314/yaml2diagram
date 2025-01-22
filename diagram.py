@@ -6,19 +6,19 @@ DIAGRAM_CLASSES = [ 'row' ] + [ f'col-{i}' for i in range(1, 8+1) ]
 # Supported diagram attributes
 DIAGRAM_ATTRIBUTES = []
 
+COLORS = [ 'red', 'orange', 'yellow', 'green', 'light-blue', 'blue', 'purple' ]
 # Supported container classes
 CONTAINER_CLASSES = [ 
                      # Container types
-                     'box', 'folder',
+                     'box', 'folder', 'pad',
 
                      # Modifiers
                      'row', 'dashed', 'skew',
-                     'abs', 'top', 'bottom', 'right', 'left'
-
-                     # Colors
-                     'blue', 't-blue', 'b-blue',
-                     'red', 't-red', 'b-red',
+                     'abs', 'top', 'bottom', 'right', 'left',
                      ]
+CONTAINER_CLASSES += COLORS 
+CONTAINER_CLASSES += [ 't-' + c for c in COLORS  ]
+CONTAINER_CLASSES += [ 'b-' + c for c in COLORS  ]
 # SPECIAL_CLASSES = [ 'icon' ]
 # Supported container attributes
 CONTAINER_ATTRIBUTES = [ 'label' ]
@@ -42,10 +42,22 @@ def parse_dict(key, value):
         if not isinstance(value, str):
             raise Exception(f'Invalid icon at {key}: content is not of type string but of type {type(value)}')
 
+        classes = [ c for c in classes if c != "icon" ]
+
+        invalid_classes = [ c not in CONTAINER_CLASSES for c in classes ]
+        if any(invalid_classes):
+            issue = invalid_classes.index(True)
+            raise Exception(f'Invalid class ("{classes[issue]}") in container element ("{key}")')
+
+        invalid_attributes = [ a[0] not in CONTAINER_ATTRIBUTES for a in attributes ]
+        if any(invalid_attributes):
+            issue = invalid_attributes.index(True)
+            raise Exception(f'Invalid attribute ("{attributes[issue][0]}={attributes[issue][1]}") in container element ("{key}")')
+
         return {
                 'type': 'icon',
                 'id': id,
-                'classes': [ c for c in classes if c != "icon" ],
+                'classes': classes,
                 'attributes': attributes,
                 'content': value
                 }

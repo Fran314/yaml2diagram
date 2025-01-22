@@ -35,34 +35,43 @@ body {
 	background-color: var(--background-color);
 
 	--black: #333;
-	--blue-0: #3003d9;
-	--blue-1: #3003d9;
-	/* --blue-1: #0c0293; */
-	--red-0: #ea323c;
-	--red-1: #c42430;
+	/* --blue: #3003d9; */
+	--red: #c42430;
+
+	/* Palette from: https://lospec.com/palette-list/resurrect-64 */
+	/* --red: #e83b3b; */
+	/* --orange: #f57d4a; */
+	/* --yellow: #f9c22b; */
+	/* --green: #239063; */
+	/* --light-blue: #4d9be6; */
+	/* --blue: #4d65b4; */
+	--purple: #6b3e75;
+
+	/* Palette from: https://lospec.com/palette-list/sweetie-16 */
+	/* --red: #b13e53; */
+	--orange: #ef7d57;
+	--yellow: #ffcd75;
+	--green: #38b764;
+	--light-blue: #41a6f6;
+	--blue: #3b5dc9;
+	/* --purple: #5d275d; */
 }
 
 /* COLORS */
-.b-blue {
-	--border-color: var(--blue-0);
-}
-.t-blue {
-	--text-color: var(--blue-1);
-}
-.blue {
-	--border-color: var(--blue-0);
-	--text-color: var(--blue-1);
-}
+$colors: 'red', 'orange', 'yellow', 'green', 'light-blue', 'blue', 'purple';
 
-.b-red {
-	--border-color: var(--red-0);
-}
-.t-red {
-	--text-color: var(--red-1);
-}
-.red {
-	--border-color: var(--red-0);
-	--text-color: var(--red-1);
+@each $color in $colors {
+	.b-#{$color} {
+		--border-color: var(--#{$color});
+	}
+	.t-#{$color} {
+		--text-color: var(--#{$color});
+	}
+
+	.#{$color} {
+		--border-color: var(--#{$color});
+		--text-color: var(--#{$color});
+	}
 }
 /* */
 
@@ -90,7 +99,6 @@ body {
 
 /* OBJECTS */
 .container {
-	padding: 0.1rem 0.25rem;
 	border-radius: 7px;
 	background-color: var(--background-color);
 
@@ -105,7 +113,6 @@ body {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	gap: 1rem;
 
 	&.row {
 		flex-direction: row;
@@ -115,16 +122,24 @@ body {
 		margin-top: 1rem;
 	}
 	&[label]::before {
+		z-index: -1;
+		background-color: var(--background-color);
 		position: absolute;
 		bottom: 100%;
 		left: 0%;
 		display: block;
 		content: attr(label);
 		color: var(--border-color);
+
+		padding: 0.1rem 0.5rem;
 	}
+}
+.pad {
+	padding: 0.3rem;
 }
 .box {
 	padding: 1rem;
+	gap: 1rem;
 
 	border: solid 2px;
 	border-radius: 10px;
@@ -135,6 +150,7 @@ body {
 
 .folder {
 	padding: 0.5rem 1rem 0.5rem 0.5rem;
+	gap: 1rem;
 
 	border: solid 2px;
 	border-radius: 10px;
@@ -144,6 +160,8 @@ body {
 	min-height: 2.5rem;
 
 	&::before {
+		z-index: -1;
+		background-color: var(--background-color);
 		display: block;
 		content: '';
 		position: absolute;
@@ -168,7 +186,7 @@ body {
 .dashed {
 	/* border: dashed 2px var(--border-color); */
 	border-style: dashed;
-	&::before {
+	&.folder::before {
 		border-style: dashed;
 	}
 }
@@ -208,10 +226,21 @@ body {
 	justify-content: center;
 	align-items: center;
 
+	color: var(--text-color);
+
 	.material-icons {
 		color: inherit;
 
 		font-size: 40px;
+	}
+}
+
+svg {
+	background: var(--background-color);
+	box-sizing: content-box;
+
+	path {
+		fill: var(--text-color);
 	}
 }
 /* */

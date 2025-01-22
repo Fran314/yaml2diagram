@@ -1,6 +1,10 @@
 from os import path
 import sass
 
+from material_icons import MaterialIcons
+
+icon_manager = MaterialIcons()
+
 
 def opening_tag(tag, id, classes, attributes):
     opening_tag_content = [ tag ]
@@ -61,11 +65,13 @@ def render_obj(obj):
                     render_obj(obj['content'])
                     )
         elif obj['type'] == 'icon':
+            icon_names = obj['content'].split(' ')
+            icons = [icon_manager.get(i) for i in icon_names]
             return div(
                     obj['id'],
                     ['icon'] + obj['classes'],
                     obj['attributes'],
-                    span(obj['content'])
+                    ''.join(icons)
                     )
         else:
             raise Exception("Impossible object found, unknown type")
