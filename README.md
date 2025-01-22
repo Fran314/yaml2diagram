@@ -63,11 +63,25 @@ line breaks. There are other solutions if you don't want line breaks. See
 
 A diagram consisting of only a single string can be expressed as the following
 
+<table>
+<tr>
+<td>
+    
 ```yaml
-# trivial-diagram.yml
+# just-text-diagram.yml
 
-diagram: some text
-```
+diagram: here is just some text
+```       
+</td>
+<td>
+    
+![Example of a diagram generated with yaml2diagram](showcase/img.png)
+
+</td>
+</tr>
+</table>
+
+
 
 ### Containers
 
