@@ -77,7 +77,7 @@ diagram: here is just some text
 </td>
 <td>
 
-<img src="showcase/just-text-diagram.png" width="200px"/>
+<img src="showcase/just-text-diagram.png" width="300px"/>
 
 </td>
 </tr>
@@ -109,7 +109,7 @@ diagram:
 </td>
 <td>
 
-![Diagram with just a box](showcase/just-a-box-diagram.png)
+<img src="showcase/just-a-box-diagram.png" width="300px"/>
 
 </td>
 </tr>
@@ -161,7 +161,7 @@ diagram:
 </td>
 <td>
 
-![Diagram with valid YAML but not recommended container syntax](showcase/valid-YAML-but-not-recommended-container-syntax.png)
+<img src="showcase/valid-YAML-but-not-recommended-container-syntax.png" width="300px"/>
 
 </td>
 </tr>
@@ -182,7 +182,7 @@ diagram:
 </td>
 <td>
 
-![Diagram with recommended container syntax](showcase/recommended-container-syntax.png)
+<img src="showcase/recommended-container-syntax.png" width="300px"/>
 
 </td>
 </tr>
@@ -222,7 +222,7 @@ diagram:
 </td>
 <td>
 
-![Diagram with an example list](showcase/list-example-diagram.png)
+<img src="showcase/list-example-diagram.png" width="300px"/>
 
 </td>
 </tr>
@@ -263,7 +263,7 @@ diagram:
 </td>
 <td>
 
-![Diagram with nested lists](showcase/nested-lists-are-not-suggested.png)
+<img src="showcase/nested-lists-are-not-suggested.png" width="300px"/>
 
 </td>
 </tr>
@@ -291,7 +291,7 @@ diagram:
 </td>
 <td>
 
-![Diagram with allowed nested lists](showcase/these-nested-lists-are-ok.png)
+<img src="showcase/these-nested-lists-are-ok.png" width="300px"/>
 
 </td>
 </tr>
@@ -322,7 +322,7 @@ diagram:
 </td>
 <td>
 
-![Diagram with empties](showcase/diagram-with-empties.png)
+<img src="showcase/diagram-with-empties.png" width="300px"/>
 
 </td>
 </tr>
@@ -450,7 +450,7 @@ diagram.row:
 </td>
 <td>
 
-![Diagram with icons](showcase/diagram-with-icons.png)
+<img src="showcase/diagram-with-icons.png" width="300px"/>
 
 </td>
 </tr>
