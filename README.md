@@ -75,9 +75,9 @@ diagram: here is just some text
 ````
 
 </td>
-<td width="50%">
+<td>
 
-![Diagram with just some text](showcase/just-text-diagram.png)
+<img src="showcase/just-text-diagram.png" width="200px"/>
 
 </td>
 </tr>
@@ -115,8 +115,9 @@ diagram:
 </tr>
 </table>
 
-> [!WARNING] As far as YAML is concerned, in the previous example `.box` is just
-> one of the possibly multiple entries of the dictionary `diagram`.
+> [!WARNING]  
+> As far as YAML is concerned, in the previous example `.box` is just one of the
+> possibly multiple entries of the dictionary `diagram`.
 >
 > Intuitively, it would make sense for multiple entries to be displayed as
 > separate containers one after the other at the same level. Indeed,
@@ -181,7 +182,7 @@ diagram:
 </td>
 <td>
 
-![Diagram with recommended container syntax](showcase/recommendend-container-syntax.png)
+![Diagram with recommended container syntax](showcase/recommended-container-syntax.png)
 
 </td>
 </tr>
