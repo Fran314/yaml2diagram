@@ -228,8 +228,8 @@ diagram:
 </tr>
 </table>
 
-> [!WARNING] While not suggested, entries of a list could also be lists
-> themselves.
+> [!WARNING]  
+> While not suggested, entries of a list could also be lists themselves.
 >
 > The effect of doing this is that `yaml2diagram` will just flatten the list and
 > raise a warning. It is not suggested to use nested lists (unless when using
